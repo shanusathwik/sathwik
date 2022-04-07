@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .table{
+        border-width:2px;
+        border-style:solid;
+        border-radius:5px;
+        border-color:aliceblue;
+        box-shadow:0 0 5px;
+        }
+        .header{
+        background-color:gray;
+        }
+        .container{
+        background-color:aliceblue;
+        background-size:cover;
+        }
+    </style>
+    <meta charset="utf-8"/>
+    <title>Content Management</title>
+</head>
+<body>
+<div class="container" align="center">
+    <div class="header">
+    <h1>Screen List</h1>
+    </div>
+    <a href="new">Create New Screen</a>
+
+    <br/><br/>
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Screen</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="e : ${contentlist}">
+            <td th:text="${e.id}">ID</td>
+            <td th:text="${e.name}">Screen</td>
+            <td th:text="${e.description}">Description</td>
+            <td>
+                <a th:href="@{'/edit/' + ${e.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${e.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
